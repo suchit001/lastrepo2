@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'secretariat',
     'student',
     'guide',
+    'budget',
+    'project',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

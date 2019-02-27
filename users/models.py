@@ -34,13 +34,13 @@ class CustomUser(AbstractUser):
 
 
 
-class sec_details(models.Model):
-
-    designation = models.CharField(max_length=100)
-    sec_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-
-    def __str__(self):
-         return str(self.sec_id)
+# class sec_details(models.Model):
+#
+#     designation = models.CharField(max_length=100)
+#     sec_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#          return str(self.sec_id)
 
 # class Director_details(models.Model):
 #     director_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -61,10 +61,10 @@ class sec_details(models.Model):
 #     st_collab_id = models.ForeignKey('dashboard.collaborations', on_delete=models.CASCADE)
 #
 
-class Principal_investigator(models.Model):
-    P_Dept = models.CharField(max_length=100)
-    P_designation = models.CharField(max_length=100)
-    principal_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-
-    def __str__(self):
-         return str(self.principal_id)
+# class Principal_investigator(models.Model):
+#     P_Dept = models.CharField(max_length=100)
+#     P_designation = models.CharField(max_length=100)
+#     principal_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+#
+#     def __str__(self):
+#          return str(self.principal_id)

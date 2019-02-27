@@ -1,5 +1,10 @@
 from django.shortcuts import redirect, render
-from users.models import Director_details,Std_details,Principal_investigator,sec_details,CustomUser
+#from users.models import ,Std_details,Principal_investigator,sec_details,CustomUser
+from users.models import *
+from student.models import *
+from guide.models import *
+from secretariat.models import *
+from director.models import *
 
 def panda(request):
     if(request.user.is_authenticated):
