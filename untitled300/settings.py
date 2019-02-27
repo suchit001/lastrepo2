@@ -33,6 +33,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users',
     'dashboard',
+    'director',
+    'secretariat',
+    'student',
+    'guide',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -86,7 +90,7 @@ WSGI_APPLICATION = 'untitled300.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db2.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db3.sqlite3'),
     }
 }
 
@@ -112,6 +116,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
+
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR,'static'),
+]
 
 LANGUAGE_CODE = 'en-us'
 

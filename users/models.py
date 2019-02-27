@@ -15,6 +15,7 @@ class CustomUser(AbstractUser):
 
     def _str_(self):
         return str(self.username)
+
 #
 # class Guide(models.Model):
 #     guide_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -41,29 +42,29 @@ class sec_details(models.Model):
     def __str__(self):
          return str(self.sec_id)
 
-class Director_details(models.Model):
-    director_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    designation = models.CharField(max_length=100)
+# class Director_details(models.Model):
+#     director_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+#     designation = models.CharField(max_length=100)
+#
+#     def __str__(self):
+#          return str(self.director_id)
 
-    def __str__(self):
-         return str(self.director_id)
-
-class Std_details(models.Model):
-    student_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    st_designation = models.CharField(max_length=100)
-    study_purpose = (
-        ('D', 'DNB'), ('M', 'MSc'), ('P', 'PhD'), ('O', 'Others')
-    )
-    st_any_pub = models.TextField()
-    st_study_purpose = models.CharField(max_length=100, choices=study_purpose)
-    st_study_other = models.CharField(max_length=100)
-    st_collab_id = models.ForeignKey('dashboard.collaborations', on_delete=models.CASCADE)
+# class Std_details(models.Model):
+#     student_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+#     st_designation = models.CharField(max_length=100)
+#     study_purpose = (
+#         ('D', 'DNB'), ('M', 'MSc'), ('P', 'PhD'), ('O', 'Others')
+#     )
+#     st_any_pub = models.TextField(default ="banda")
+#     st_study_purpose = models.CharField(max_length=100, choices=study_purpose)
+#     st_study_other = models.CharField(max_length=100)
+#     st_collab_id = models.ForeignKey('dashboard.collaborations', on_delete=models.CASCADE)
+#
 
 class Principal_investigator(models.Model):
     P_Dept = models.CharField(max_length=100)
     P_designation = models.CharField(max_length=100)
     principal_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-
 
     def __str__(self):
          return str(self.principal_id)

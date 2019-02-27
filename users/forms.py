@@ -5,25 +5,26 @@ from dashboard.models import collaborations, Co_Investigator, project_details, T
 
 class CustomStudentCreationForm(UserCreationForm):
 
-    guide = forms.ModelChoiceField(
-        queryset= Principal_investigator.objects.all()
-    )
+    # guide = forms.ModelChoiceField(
+    #     queryset= Principal_investigator.objects.all()
+    # )
+
+
 
 
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('name', 'username', 'email', 'type', 'contact','guide')
+        fields = ('name', 'username', 'email', 'type', 'contact')
 
     def save(self):
         user = super().save(commit= False)
         user.type = 3
         user.save()
-        guide = self.cleaned_data.get('guide')
+        # guide = self.cleaned_data.get('guide')
         #guide_parent = CustomUser.objects.filter(username = guide)
-        guide_obj = CustomUser.objects.filter(username = str(guide))
-        guide_obj = guide_obj[0]
-        student = Std_details.objects.create(student_id=user,guide = guide_obj)
-        print(student)
+        # guide_obj = CustomUser.objects.filter(username = str(guide))
+        # guide_obj = guide_obj[0]
+        # student = Std_details.objects.create(student_id=user,student_guide = guide_obj)
         #student.guide_id = guide_obj
         student.save()
         return user
