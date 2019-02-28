@@ -197,3 +197,12 @@ class project_details(models.Model):
     Research_plan= models.TextField()
     conflict_of_interest = models.BooleanField(max_length=2)
     conflict_comment = models.CharField(max_length=100)
+
+
+class collaborations(models.Model):
+    Institue = models.CharField(max_length=100)
+    Name = models.CharField(max_length=100)
+    Designation = models.CharField(max_length=100)
+    Collab_type = models.TextField()
+    Ec_approval = models.BooleanField(max_length=2)
+    Authorship = models.TextField()

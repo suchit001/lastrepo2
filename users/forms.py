@@ -4,7 +4,6 @@ from .models import CustomUser
 from student.models import Std_details
 from guide.models import Principal_investigator
 #from dashboard.models import Co_Investigator, project_details, Time_Frame,study_design, pat_sel_id, study_step, work_up, prog_report, comp_report, clinical_studies
-from student.models import collaborations
 class CustomStudentCreationForm(UserCreationForm):
 
     # guide = forms.ModelChoiceField(
@@ -28,7 +27,7 @@ class CustomStudentCreationForm(UserCreationForm):
         # guide_obj = guide_obj[0]
         # student = Std_details.objects.create(student_id=user,student_guide = guide_obj)
         #student.guide_id = guide_obj
-        student.save()
+        #student.save()
         return user
 
 

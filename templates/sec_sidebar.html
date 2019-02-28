@@ -11,19 +11,19 @@
                         <img src="{% static 'images/maleuser.png' %}" alt="Logo" style="border-radius:50%;">
                     </li>
                     <li class="active">
-                        <a href="{% url 'secretariat_dashboard' %}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                        <a href="{% url 'secretariat:secretariat_dashboard' %}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="{% url 'secretariat_profile' %}" class="dropdown-toggle"> <i class="menu-icon fa  fa-address-card"></i>Secretariat Profile</a>
+                        <a href="{% url 'secretariat:secretariat_profile' %}" class="dropdown-toggle"> <i class="menu-icon fa  fa-address-card"></i>Secretariat Profile</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="{% url 'secretariat_director_review' %}" class="dropdown-toggle"> <i class="menu-icon fa fa-list"></i>Director Review</a>
+                        <a href="{% url 'secretariat:secretariat_director_review' %}" class="dropdown-toggle"> <i class="menu-icon fa fa-list"></i>Director Review</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="{% url 'secretariat_irb_review' %}" class="dropdown-toggle" > <i class="menu-icon fa fa-cogs"></i>IRB Review</a>
+                        <a href="{% url 'secretariat:secretariat_irb_review' %}" class="dropdown-toggle" > <i class="menu-icon fa fa-cogs"></i>IRB Review</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="{% url 'secretariat_final_review' %}" class="dropdown-toggle" > <i class="menu-icon fa fa-money"></i>Final Review</a>
+                        <a href="{% url 'secretariat:secretariat_final_review' %}" class="dropdown-toggle" > <i class="menu-icon fa fa-money"></i>Final Review</a>
                     </li>
             {% endblock %}
 

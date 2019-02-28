@@ -54,3 +54,18 @@ class Salaryy(models.Model):
     Total0 = models.IntegerField(default=10)
 
 
+class Budget(models.Model):
+    Nop = models.IntegerField()
+    Travel_allow = models.IntegerField()
+    No_of_visit = models.IntegerField()
+    Rs_per_visit = models.IntegerField()
+    Research_fellow_choices = (
+        (1, 'In-house'),
+        (2, 'New'),
+        (3, 'DNB')
+    )
+    Research_fellow_id = models.IntegerField(choices = Research_fellow_choices)
+    Remarks = models.TextField(blank=True)
+    Miscellan = models.IntegerField()
+
+

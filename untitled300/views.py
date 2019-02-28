@@ -6,24 +6,21 @@ from guide.models import *
 from secretariat.models import *
 from director.models import *
 
-def panda(request):
+def routing_logic(request):
     if(request.user.is_authenticated):
 
 
         if(request.user.type == 3):
-            student = Std_details.objects.filter(student_id__in = CustomUser.objects.filter(username= str(request.user.username )))
-            guidename = Principal_investigator.objects.filter(guide_id__in = CustomUser.objects.filter(username = student[0].guide))
+            # student = Std_details.objects.filter(student_id__in = CustomUser.objects.filter(username= str(request.user.username )))
+            # guidename = Principal_investigator.objects.filter(guide_id__in = CustomUser.objects.filter(username = student[0].guide))
 
-            print(student[0].student_id)
-            print(guidename)
-
-            return redirect('student_dashboard')
+            return redirect('student:student_dashboard')
         elif(request.user.type == 0):
-            return redirect('director_dashboard')
+            return redirect('director:director_dashboard')
         elif(request.user.type == 1):
-            return redirect('secretariat_dashboard')
+            return redirect('secretariat:secretariat_dashboard')
         elif(request.user.type == 2):
-            return redirect('guide_dashboard')
+            return redirect('guide:guide_dashboard')
 
         else:
             context = {

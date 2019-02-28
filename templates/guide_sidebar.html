@@ -11,13 +11,13 @@
                         <img src="{% static 'images/femaleuser.jpg' %}" alt="Logo" style="border-radius:50%;">
                     </li>
                     <li class="active">
-                        <a href="{% url 'guide_dashboard' %}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                        <a href="{% url 'guide:guide_dashboard' %}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="{% url 'guide_profile' %}" class="dropdown-toggle" > <i class="menu-icon fa  fa-address-card"></i>Guide Profile</a>
+                        <a href="{% url 'guide:guide_profile' %}" class="dropdown-toggle" > <i class="menu-icon fa  fa-address-card"></i>Guide Profile</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="{% url 'guide_student' %}" class="dropdown-toggle"> <i class="menu-icon fa fa-list"></i>Student Details</a>
+                        <a href="{% url 'guide:guide_student' %}" class="dropdown-toggle"> <i class="menu-icon fa fa-list"></i>Student Details</a>
                     </li>
 
             {% endblock %}
