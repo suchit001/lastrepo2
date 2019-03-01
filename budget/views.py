@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from student.models import Std_details
+from users.models import CustomUser
 from .forms import *
+from .forms import ExtensionForm, ResearchFellowForm, MaterialForm, OtherForm
 # Create your views here.
 
-
-def sample_create_view(request):
+def add_form(request):
     bud_form = BudgetForm()
     cap_form = CapitalForm()
     Sal = Salary
@@ -37,6 +40,14 @@ def sample_create_view(request):
             form4.save()
             form5.save()
             form6.save()
+
+            student = Std_details.objects.filter(
+                student_id__in=CustomUser.objects.filter(username=str(request.user.username))
+            )
+            student = student[0]
+            student.status_choice_id = 2
+            student.save()
+
             bud_form = BudgetForm()
             cap_form = CapitalForm()
 
@@ -59,3 +70,48 @@ def sample_create_view(request):
                'form6': consum
                }
     return render(request, "student_dashboard/student_budget.html", context)
+
+def routing_logic(request):
+    student = Std_details.objects.filter(student_id__in = CustomUser.objects.filter(username = str(request.user.username)))
+    student = student[0]
+    if(student.status_choice_id == 1 ):
+        return redirect('student:budget:addform')
+
+    if (student.status_choice_id == 2):
+        return redirect('student:budget:addform')
+
+    if (student.status_choice_id == 3):
+        return redirect('student:budget:term')
+
+
+
+#term extension
+def extension_view(request):
+    ext_form = ExtensionForm
+    res_fell_form = ResearchFellowForm
+    mat_form = MaterialForm
+    other_form = OtherForm
+    if request.POST:
+        ext_form = ExtensionForm(request.POST)
+        res_fell_form = ResearchFellowForm(request.POST)
+        mat_form = MaterialForm(request.POST)
+        other_form = OtherForm(request.POST)
+
+        if ext_form.is_valid() and res_fell_form.is_valid() and mat_form.is_valid() and other_form.is_valid():
+            be1 = ext_form.save(commit=False)
+            be2 = res_fell_form.save(commit=False)
+            be3 = mat_form.save(commit=False)
+            be4 = other_form.save(commit=False)
+
+            be1.save()
+            be2.save()
+            be3.save()
+            be4.save()
+    context = {'form1': ext_form,
+               'form2': res_fell_form,
+               'form3': mat_form,
+               'form4': other_form}
+    return render(request, "student_dashboard/student_extension.html", context)
+
+
+
