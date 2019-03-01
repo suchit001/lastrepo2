@@ -3,24 +3,37 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
 from student.models import Std_details
 from guide.models import Principal_investigator
-#from dashboard.models import Co_Investigator, project_details, Time_Frame,study_design, pat_sel_id, study_step, work_up, prog_report, comp_report, clinical_studies
+
 class CustomStudentCreationForm(UserCreationForm):
 
-    # guide = forms.ModelChoiceField(
-    #     queryset= Principal_investigator.objects.all()
-    # )
+    designation = forms.CharField(
+        max_length=100,
+        required=True,
+    )
 
+    study_purpose = (
+        ('D', 'DNB'), ('M', 'MSc'), ('P', 'PhD'), ('O', 'Others')
+    )
 
-
+    study_purpose = forms.ChoiceField(
+        choices= study_purpose
+    )
 
     class Meta(UserCreationForm):
         model = CustomUser
-        fields = ('name', 'username', 'email', 'type', 'contact')
+        fields = ('name', 'username', 'email', 'type', 'contact',)
 
     def save(self):
         user = super().save(commit= False)
         user.type = 3
         user.save()
+
+        designation = self.cleaned_data.get('designation')
+        study_purpose = self.cleaned_data.get('study_purpose')
+
+        student = Std_details.objects.create(student_id=user, st_designation=designation,st_study_purpose=study_purpose)
+        student.save()
+
         # guide = self.cleaned_data.get('guide')
         #guide_parent = CustomUser.objects.filter(username = guide)
         # guide_obj = CustomUser.objects.filter(username = str(guide))
@@ -28,6 +41,8 @@ class CustomStudentCreationForm(UserCreationForm):
         # student = Std_details.objects.create(student_id=user,student_guide = guide_obj)
         #student.guide_id = guide_obj
         #student.save()
+
+
         return user
 
 
