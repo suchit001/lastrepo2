@@ -10,9 +10,8 @@ from django.template import RequestContext
 
 
 
-from .models import Principal_investigator
 from .forms import research_fellow_form, student_details_form, project_form, \
-    time_frame_form, collab_form
+    time_frame_form
 
 
 def display_form1(request):

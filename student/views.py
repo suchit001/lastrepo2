@@ -15,14 +15,13 @@ def routing_logic(request):
 
 
 def student_dashboard(request):
-    #student = Std_details.objects.filter(student_id__in=CustomUser.objects.filter(username=str(request.user.username)))
-    # guidename = Director_details.objects.filter(principal_id__in=CustomUser.objects.filter(username=student[0].guide))
-    # print(student[0].student_id)
-    # context= {
-    #     'student': student[0],
-    #     'guide': guidename[0],
-    # }
-    return render(request,'student_dashboard/student_dashboard.html')
+    student = Std_details.objects.filter(student_id__in=CustomUser.objects.filter(username=str(request.user.username)))
+
+    context = {
+        'student' : student,
+    }
+
+    return render(request, 'student_dashboard/student_dashboard.html', context=context)
 
 def student_profile(request):
     return render(request,'student_dashboard/student_profile.html')

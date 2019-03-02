@@ -5,7 +5,6 @@ from .views import routing_logic
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-#    path('dashboard/', include('dashboard.urls')),
     path('users/', include('users.urls')),
     path('student/', include('student.urls')),
     path('guide/', include('guide.urls')),
