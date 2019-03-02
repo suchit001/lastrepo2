@@ -45,3 +45,5 @@ class Std_details(models.Model):
 
     st_project_status = models.IntegerField(choices=project_status, default=0)
 
+    def _str_(self):
+        return str(self.student_id.name)

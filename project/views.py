@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response, get_object_or_404
 
+from project.models import project_details
 from student.models import Std_details
 from users.models import CustomUser
 from django.template import RequestContext
@@ -11,7 +12,7 @@ from django.template import RequestContext
 
 
 from .forms import research_fellow_form, student_details_form, project_form, \
-    time_frame_form
+    time_frame_form, Edit_project_details, Edit_time_frame
 
 
 def display_form1(request):
@@ -64,7 +65,84 @@ def display_form1(request):
 
     return render(request, "project/submission_form1.html", context)
 
+def edit_form1(request):
+    # project = project_details.objects.get(stud_id=Std_details.objects.get(student_id =CustomUser.objects.get(username = request.user.username)))
+    # time_frame = project.Time_frame_id
+    # pro_form = Edit_project_details(
+    #     initial={
+    #         'enroll_period' : project.enroll_period,
+    #         'period_of_data' : project.period_of_data,
+    #         'budget_estimate' : project.budget_estimate,
+    #         'choose_fund' : project.choose_fund,
+    #         'sample_size' : project.sample_size,
+    #     }
+    # )
+    # time_form = Edit_time_frame(
+    #     initial={
+    #         'study_coll_period' : time_frame.study_coll_period,
+    #         'retro_period' : time_frame.retro_period,
+    #         'patient_part' : time_frame.patient_part,
+    #         'data_analysis' : time_frame.data_analysis,
+    #         'Thesis_submis' : time_frame.Thesis_submis,
+    #     }
+    # )
+    #
+    # project = project_details.objects.get(stud_id=Std_details.objects.get(student_id =CustomUser.objects.get(username = request.user.username)))
+    #
+    # if request.POST:
+    #     pro_form = project_form(request.POST)
+    #     tim_form = time_frame_form(request.POST)
+    #     if pro_form.is_valid() and tim_form.is_valid():
+    #         project = project_details.objects.get(
+    #             stud_id=Std_details.objects.get(student_id=CustomUser.objects.get(username=request.user.username)))
+    #         project.enroll_period = pro_form.cleaned_data['enroll_period']
+    #         project.period_of_data = pro_form.cleaned_data['enroll_period']
+    #         project.budget_estimate = pro_form.cleaned_data['budget_estimate']
+    #         project.choose_fund = pro_form.cleaned_data['choose_fund']
+    #         project.sample_size = pro_form.cleaned_data['sample_size']
+    #
+    #
+    #         time_frame = project.Time_frame_id
+    #
+    #         time_frame.study_coll_period = time_form.cleaned_data['study_coll_period']
+    #         time_frame.retro_period = time_form.cleaned_data['retro_period']
+    #         time_framepatient_part = time_form.cleaned_data['patient_part']
+    #         time_frame.data_analysis = time_form.cleaned_data['data_analysis']
+    #         time_frame.Thesis_submit = time_form.cleaned_data['Thesis_submis']
+    #
+    #
+    #
+    #         project.save()
+    #         time_frame.save()
+    #         return redirect('student:student_dashboard')
+    # context = {
+    #     'form5': pro_form,
+    #     'form6': time_form,
+    # }
+    #
+    # return render(request, "project/edit_form1.html", context)
 
+    project = project_details.objects.get(
+        stud_id=Std_details.objects.get(student_id=CustomUser.objects.get(username=request.user.username)))
+    time_frame = project.Time_frame_id
+    pro_form = Edit_project_details(instance=project,)
+    pro_form.fields['PI_id'].disabled = True
+    time_form = Edit_time_frame(instance=time_frame)
+
+    if request.POST:
+        pro_form = project_form(request.POST,instance=project)
+        tim_form = time_frame_form(request.POST,instance=time_frame)
+        if pro_form.is_valid() and tim_form.is_valid():
+
+            pro_form.save()
+            tim_form.save()
+            return redirect('student:student_dashboard')
+    context = {
+        'form5': pro_form,
+        'form6': time_form,
+    }
+
+    return render(request, "project/edit_form1.html", context)
 
 # todo later
 # def display_form2(request):

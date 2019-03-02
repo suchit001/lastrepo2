@@ -10,7 +10,8 @@ from .forms import CustomStudentCreationForm, CustomUserChangeForm
 class CustomUserAdmin(UserAdmin):
      add_form = CustomStudentCreationForm
      model = CustomUser
-     list_display = ['username', 'name','contact']
+     list_display = ['username', 'name','contact','type']
+     list_editable = ['type']
 
 admin.site.register(CustomUser, admin_class=CustomUserAdmin)
 # admin.site.register(sec_details)

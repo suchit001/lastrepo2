@@ -73,97 +73,22 @@
                           <th style="width: 20%">Project Name</th>
                           <th style="width: 20%">Researcher</th>
                           <th style="width: 20%">Guide Name</th>
-                          <th style="width: 20%">Investigator Name</th>
                           <th>Status</th>
                           <th style="width: 20%"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>101</td>
-                          <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
-                          </td>
-                            <td>Team Encipher</td>
-                            <td>Rashmi Thakur</td>
-                            <td>Hinduja Hospital</td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-sm">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>101</td>
-                          <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
-                          </td>
-                            <td>Team Encipher</td>
-                            <td>Rashmi Thakur</td>
-                            <td>Hinduja Hospital</td>
-                          <td>
-                            <button type="button" class="btn btn-warning btn-sm">Pending</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>101</td>
-                          <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
-                          </td>
-                            <td>Team Encipher</td>
-                            <td>Rashmi Thakur</td>
-                            <td>Hinduja Hospital</td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-sm">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>101</td>
-                          <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
-                          </td>
-                            <td>Team Encipher</td>
-                            <td>Rashmi Thakur</td>
-                            <td>Hinduja Hospital</td>
-                          <td>
-                            <button type="button" class="btn btn-success btn-sm">Success</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>101</td>
-                          <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
-                          </td>
-                            <td>Team Encipher</td>
-                            <td>Rashmi Thakur</td>
-                            <td>Hinduja Hospital</td>
-                          <td>
-                            <button type="button" class="btn btn-danger btn-sm">Rejected</button>
-                          </td>
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
-                          </td>
-                        </tr>
+                         {% for object in project %}
+                             <tr>
+                                 <td>{{ object.stud_id.student_id.id }}</td>
+                                 <td>{{ object.project_title }}</td>
+                                 <td>{{ object.stud_id.student_id.name }}</td>
+                                 <td>{{ object.PI_id.principal_id.name }}</td>
+                                 <td>{{ object.stud_id.get_st_project_status_display}}</td>
+                                 <td><a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a></td>
+                             </tr>
+                            {% endfor %}
+                      <tr><td>Suchita</td></tr>
                       </tbody>
                     </table>
                     <!-- end project list -->
