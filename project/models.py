@@ -5,6 +5,8 @@ from director.models import *
 from budget.models import *
 from secretariat.models import *
 
+
+
 class study_design(models.Model):
     case_report = (
         ('O', 'Cohort,Prospective'), ('ER', 'Open-(non blinded)'), ('EN', 'Non-Randomized')
@@ -153,9 +155,11 @@ class prog_report(models.Model):
     feed_id = models.ForeignKey(feedback, on_delete=models.CASCADE)
 
 
+
+# todo give info for coinvestigator
 class comp_report(models.Model):
     p_id = models.ForeignKey(Principal_investigator, on_delete=models.CASCADE)
-    ci_id = models.ForeignKey(Co_Investigator, on_delete=models.CASCADE)
+   # ci_id = models.ForeignKey(Co_Investigator, on_delete=models.CASCADE)
     st_id = models.ForeignKey(Std_details, on_delete=models.CASCADE)
     date_study_completion = models.DateField()
     clin_stud_id = models.ForeignKey(clinical_studies, on_delete=models.CASCADE)
@@ -167,23 +171,42 @@ class comp_report(models.Model):
 
     #----------------------------------------------------------------------------------------------------------
 class project_details(models.Model):
-    project_code_no = models.CharField(editable=True, max_length=100)
+
+
+    # todo project code was ccommented .. use python generated ids
+
+    #project_code_no = models.CharField(editable=True, max_length=100)
+
+    # 1
     PI_id = models.ForeignKey(Principal_investigator, on_delete=models.CASCADE)
-    Co_id = models.ForeignKey(Co_Investigator, on_delete=models.CASCADE)
+    # Co_id = models.ForeignKey(Co_Investigator, on_delete=models.CASCADE
+    stud_id = models.ForeignKey(Std_details, on_delete=models.CASCADE)
+    Time_frame_id = models.ForeignKey(Time_Frame, on_delete=models.CASCADE)
+
+    coinvestigator_name = models.CharField(max_length=100)
+    coinvestigator_designation  = models.CharField(max_length=100)
+
+
+    # 4
     period_of_data = models.IntegerField()
     enroll_period = models.IntegerField()
+
     budget_estimate = models.IntegerField()
-    stud_id = models.ForeignKey(Std_details, on_delete=models.CASCADE)
+
     project_title = models.CharField(max_length=256)
-    appr_date_erb = models.DateField()
-    st_design_id = models.ForeignKey(study_design, on_delete=models.CASCADE)
+    appr_date_erb = models.DateField(null=True)
     sample_size = models.IntegerField()
     fund = (
         ('H', 'HH'), ('O', 'Out')
     )
+
     choose_fund = models.CharField(max_length=100, choices=fund)
-    Funding_body = models.ForeignKey(Out_funding, on_delete=models.CASCADE)
-    Time_frame_id = models.ForeignKey(Time_Frame, on_delete=models.CASCADE)
+  #  Funding_body = models.ForeignKey(Out_funding, on_delete=models.CASCADE)
+
+
+class project_details2(models.Model):
+    st_design_id = models.ForeignKey(study_design, on_delete=models.CASCADE)
+
     study_steps_id = models.ForeignKey(study_step, on_delete=models.CASCADE)
     progress_report_id = models.ForeignKey(prog_report, on_delete=models.CASCADE)
     completion_report_id = models.ForeignKey(comp_report, on_delete=models.CASCADE)

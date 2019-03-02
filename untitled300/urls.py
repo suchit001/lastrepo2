@@ -12,6 +12,10 @@ urlpatterns = [
     path('director/', include('director.urls')),
     path('secretariat/', include('secretariat.urls')),
 
+
+    # only use this path for testing purpose
+    path('project/', include('project.urls')),
+
     path('users/', include('django.contrib.auth.urls')),
     path('', routing_logic, name='routing_logic'),
 

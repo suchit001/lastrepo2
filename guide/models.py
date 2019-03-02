@@ -10,8 +10,8 @@ class Principal_investigator(models.Model):
          return str(self.principal_id)
 
 
-class Co_Investigator(models.Model):
-    Co_name = models.CharField(max_length=100)
-    Co_designation = models.CharField(max_length=100)
-    Co_contact_no = models.CharField(max_length=20)
-    Co_email = models.EmailField(max_length=100, unique=True, null=True, blank=True)
+# class Co_Investigator(models.Model):
+#     Co_name = models.CharField(max_length=100)
+#     Co_designation = models.CharField(max_length=100)
+#     Co_contact_no = models.CharField(max_length=20)
+#     Co_email = models.EmailField(max_length=100, unique=True, null=True, blank=True)
