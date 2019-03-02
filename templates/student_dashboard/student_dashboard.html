@@ -17,9 +17,20 @@
                     <!-- ============================================================== -->
                     <!-- end pageheader -->
                     <!-- ============================================================== -->
+
+                {% if student.st_project_status == 2 or student.st_project_status == 5 %}
+                    <a href="{% url 'profile:edit' %}' %}"> I am panda</a>
+                {% endif %}
+
+
                       <!-- ============================================================== -->
                     <!-- timeline  -->
                     <!-- ============================================================== -->
+
+
+
+
+
 
                     <section class="cd-timeline js-cd-timeline">
                         <div class="cd-timeline__container">

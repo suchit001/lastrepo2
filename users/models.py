@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
     type = models.IntegerField(choices=TYPE_CHOICES, default=3)
     contact = models.IntegerField(default=100)
 
-    def _str_(self):
+    def __str__(self):
         return str(self.username)
 
 #

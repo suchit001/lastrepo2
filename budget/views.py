@@ -72,6 +72,7 @@ def add_form(request):
     return render(request, "student_dashboard/student_budget.html", context)
 
 def routing_logic(request):
+
     student = Std_details.objects.filter(student_id__in = CustomUser.objects.filter(username = str(request.user.username)))
     student = student[0]
     if(student.status_choice_id == 1 ):
@@ -112,6 +113,3 @@ def extension_view(request):
                'form3': mat_form,
                'form4': other_form}
     return render(request, "student_dashboard/student_extension.html", context)
-
-
-

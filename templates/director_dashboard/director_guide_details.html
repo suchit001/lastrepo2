@@ -69,89 +69,24 @@
                         <tr>
                           <th style="width: 1%">  Guide ID</th>
                           <th style="width: 20%"> Guide Name</th>
-                          <th style="width: 20%"> Guide Project</th>
-                          <th style="width: 20%">Investigator Name</th>
-                          <th>Project Status</th>
+                          <!--<th style="width: 20%"> Guide Project</th>-->
                           <th style="width: 20%"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>101</td>
+                       {% for p in pi %}
+                      <tr>
+                          <td>{{ forloop.counter }}</td>
                           <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
+                            <a>{{ p.principal_id }}</a>
+                            <br/>
                           </td>
-                            <td>Team Encipher</td>
-                             
-                            <td>Hinduja Hospital</td>
-                             
                           <td>
                             <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
                           </td>
                         </tr>
-                        <tr>
-                          <td>101</td>
-                          <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
-                          </td>
-                            <td>Team Encipher</td>
-                             
-                            <td>Hinduja Hospital</td>
-                             
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>101</td>
-                          <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
-                          </td>
-                            <td>Team Encipher</td>
-                             
-                            <td>Hinduja Hospital</td>
-                             
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>101</td>
-                          <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
-                          </td>
-                            <td>Team Encipher</td>
-                             
-                            <td>Hinduja Hospital</td>
-                             
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>101</td>
-                          <td>
-                            <a>Untitled</a>
-                            <br />
-                            <small>Due Date 01.01.2015</small>
-                          </td>
-                            <td>Team Encipher</td>
-                             
-                            <td>Hinduja Hospital</td>
-                             
-                          <td>
-                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-folder"></i> View </a>
-                          </td>
-                        </tr>
-                      </tbody>
+                        {% endfor %}
+                                              </tbody>
                     </table>
                     <!-- end project list -->
 

@@ -14,4 +14,5 @@ urlpatterns = [
 
     path('project_details/', views.student_project_details, name='student_project_details'),
     path('completion_report/', views.student_completion_report, name='student_completion_report'),
+
 ]

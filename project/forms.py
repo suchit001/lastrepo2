@@ -5,11 +5,14 @@ from .models import *
 class project_form(forms.ModelForm):
     class Meta:
         model = project_details
-        fields = ['PI_id','enroll_period','period_of_data','budget_estimate','choose_fund','sample_size']
+        fields = ['PI_id','enroll_period','period_of_data','budget_estimate','choose_fund','sample_size','project_title']
         labels = {'enroll_period':'Enrollment period for prospective study',
                   'period_of_data':'Period of Data to be included in the retrospective study',
                   'budget_estimate':'Budget Estimate(Total Amount)',
-                  'choose_fund':'Select Funding Body','sample_size':'Sample Size'}
+                  'choose_fund':'Select Funding Body','sample_size':'Sample Size',
+                  'project_title':'Project Title'}
+
+
 
 class time_frame_form(forms.ModelForm):
     class Meta:
@@ -193,5 +196,22 @@ class student_details_form(forms.ModelForm):
         fields = ['st_study_purpose', 'st_study_other','st_any_pub']
         labels = {'st_study_purpose':'Select Study Purpose','st_study_other':'Others (Specify)',
                   'st_any_pub':'Any Publications or work in the field of the Study,(not necessarily restricted to the present study) by investigator'}
+
+
+class Edit_project_details(forms.ModelForm):
+    class Meta:
+        model = project_details
+        fields = ['PI_id','enroll_period','period_of_data','budget_estimate','choose_fund','sample_size']
+
+
+class Edit_time_frame(forms.ModelForm):
+    class Meta:
+        model = Time_Frame
+        fields = ['study_coll_period','retro_period','patient_part','data_analysis','Thesis_submis']
+        labels = {'study_coll_period':'Prospective studies Enrolment sample collection period',
+                  'retro_period':'Retrospective studies-Data acquisition',
+                  'patient_part':'Period of individual patient participation not of the whole study for prospective study',
+                  'data_analysis':'Data Analysis',
+                  'Thesis_submis':'Write up & submission of Synopsis/Thesis/Paper'}
 
 
