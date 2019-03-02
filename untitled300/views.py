@@ -14,7 +14,7 @@ def routing_logic(request):
             # student = Std_details.objects.filter(student_id__in = CustomUser.objects.filter(username= str(request.user.username )))
             # guidename = Principal_investigator.objects.filter(guide_id__in = CustomUser.objects.filter(username = student[0].guide))
 
-            return redirect('student:student_dashboard')
+            return redirect('student:route')
         elif(request.user.type == 0):
             return redirect('director:director_dashboard')
         elif(request.user.type == 1):

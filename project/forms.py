@@ -5,11 +5,11 @@ from .models import *
 class project_form(forms.ModelForm):
     class Meta:
         model = project_details
-        fields = ['enroll_period','period_of_data','budget_estimate','choose_fund','sample_size','conflict_of_interest','conflict_comment']
+        fields = ['PI_id','enroll_period','period_of_data','budget_estimate','choose_fund','sample_size']
         labels = {'enroll_period':'Enrollment period for prospective study',
                   'period_of_data':'Period of Data to be included in the retrospective study',
                   'budget_estimate':'Budget Estimate(Total Amount)',
-                  'choose_fund':'Select Funding Body','sample_size':'Sample Size','conflict_of_interest':'Conflict of Interest to conduct the study','conflict_comment':'If Yes Provide Details'}
+                  'choose_fund':'Select Funding Body','sample_size':'Sample Size'}
 
 class time_frame_form(forms.ModelForm):
     class Meta:
@@ -91,11 +91,11 @@ Do not just paintings Attach proformas will be used to record the findings)',
 submitted if the study includes expenses or requires funding from HH',
                   'outside_fund':'Outside fund key'}
 
-class completion_report_form(forms.ModelForm):
-    class Meta:
-        model = project_details
-        fields = ['project_title','project_code_no']
-        labels = {'project_title':'Title of the Research Project','project_code_no':'Project Code Number'}
+# class completion_report_form(forms.ModelForm):
+#     class Meta:
+#         model = project_details
+#         fields = ['project_title','project_code_no']
+#         labels = {'project_title':'Title of the Research Project','project_code_no':'Project Code Number'}
 #
 # class completion_report_form2(forms.ModelForm):
 #     class Meta:
@@ -136,8 +136,8 @@ class completion_report_form6(forms.ModelForm):
 class progress_report_form(forms.ModelForm):
     class Meta:
         model = project_details
-        fields = ['project_title','project_code_no']
-        labels = {'project_title':'Title of the research project','project_code_no':'Project Code Number'}
+        fields = ['project_title']
+        labels = {'project_title':'Title of the research project'}
 
 # class progress_report_form2(forms.ModelForm):
 #     class Meta:
@@ -163,4 +163,35 @@ class progress_report_form5(forms.ModelForm):
         fields = ['date_of_comencenment','exp_date_completion','project_rate','brief_summary']
         labels = {'date_of_comencenment':'Date of Commencement of Study','exp_date_completion':'Expected Date of Completion of Project',
                   'project_rate':'Is the project progress as per schedule? ','brief_summary':'Is the study Clinical Study or Laboratory Study?'}
+
+
+# class princi_form(forms.ModelForm):
+#     class Meta:
+#         model = Principal_investigator
+#         fields = ['P_designation','P_Dept']
+#         labels ={
+#             'P_designation':'Designation',
+#             'P_Dept':'Department',
+#         }
+
+# class coinv_form(forms.ModelForm):
+#     class Meta:
+#         model = Co_Investigator
+#         fields = ['Co_designation']
+#         labels = {'Co_designation': 'Designation'}
+
+
+class research_fellow_form(forms.ModelForm):
+    class Meta:
+        model = Std_details
+        fields = [ 'st_designation']
+        labels = {'st_designation': 'Designation',}
+
+class student_details_form(forms.ModelForm):
+    class Meta:
+        model = Std_details
+        fields = ['st_study_purpose', 'st_study_other','st_any_pub']
+        labels = {'st_study_purpose':'Select Study Purpose','st_study_other':'Others (Specify)',
+                  'st_any_pub':'Any Publications or work in the field of the Study,(not necessarily restricted to the present study) by investigator'}
+
 
